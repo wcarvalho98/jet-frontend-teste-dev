@@ -2,6 +2,7 @@ import { Check, MoreVertical } from "lucide-react"
 import Image from "next/image"
 import Rating from "../../rating"
 import { CarReservation } from "../car-displayer"
+import { formatDate } from "@/lib/utils"
 
 export function CarMobile(props: CarReservation) {
   return (
@@ -22,13 +23,9 @@ export function CarMobile(props: CarReservation) {
         <div className="flex flex-col h-full justify-between w-full">
           <div className="flex flex-col gap-2">
             <h3 className="text-base font-semibold">{props.name}</h3>
-            <span className="text-xs text-gray-500">
-              Next reservation:{" "}
-              {props.nextReservation.toLocaleDateString("pt-BR", {
-                month: "2-digit",
-                day: "2-digit",
-              })}
-            </span>
+            <p className="text-xs text-gray-500">
+              Next reservation: {formatDate(props.nextReservation)}
+            </p>
           </div>
           <Rating rating={props.rating} />
         </div>
